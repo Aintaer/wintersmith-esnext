@@ -1,0 +1,24 @@
+{
+  "name": "wintersmith-esnext",
+  "version": "1.0.0",
+  "description": "Wintersmith plugin for ES6 transpiling",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Aintaer/wintersmith-esnext.git"
+  },
+  "keywords": [
+    "wintersmith",
+    "es6",
+    "esnext"
+  ],
+  "author": "Alex Lee (aintaer@aintaer.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aintaer/wintersmith-esnext/issues"
+  },
+  "homepage": "https://github.com/Aintaer/wintersmith-esnext"
+}
