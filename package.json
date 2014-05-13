@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/Aintaer/wintersmith-esnext/issues"
   },
-  "homepage": "https://github.com/Aintaer/wintersmith-esnext"
+  "homepage": "https://github.com/Aintaer/wintersmith-esnext",
+  "dependencies": {
+    "es6-module-transpiler": "^0.4.0",
+    "esnext": "^0.7.9"
+  }
 }
