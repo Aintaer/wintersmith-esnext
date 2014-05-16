@@ -1,6 +1,6 @@
 {
   "name": "wintersmith-esnext",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wintersmith plugin for ES6 transpiling",
   "main": "index.js",
   "scripts": {
