@@ -21,8 +21,10 @@ module.exports = function pluging(env, callback) {
 	EsCompiler.prototype.getFilename = function() {
 		return this.path.relative;
 	};
-	EsCompiler.prototype.getModulename = function() {
-		return env.utils.stripExtension(this.getFilename());
+	EsCompiler.prototype.getModulename = function(anonymous) {
+		return anonymous ?
+			null :
+			env.utils.stripExtension(this.getFilename());
 	};
 	EsCompiler.prototype.getPluginColor = function() {
 		return 'yellow';
@@ -35,7 +37,9 @@ module.exports = function pluging(env, callback) {
 				compatFix: true
 			}, config.transpilerOptions),
 			intermed = escompile(this.content, config.compilerOptions),
-			localCompiler = new Transpiler(intermed.code, this.getModulename(), transpileConf);
+			localCompiler = new Transpiler(intermed.code,
+										   this.getModulename(config.anonymous),
+										   transpileConf);
 			callback(null, new Buffer(localCompiler[format]()));
 		};
 	};
