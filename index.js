@@ -33,10 +33,12 @@ module.exports = function pluging(env, callback) {
 		return function view(env, locals, contents, templates, callback) {
 			var config = env.config.esnext || {},
 			format = formats[config.format || 'globals'],
-			transpileConf = env.utils.extend({
+			transpileConf = {
 				compatFix: true
-			}, config.transpilerOptions),
-			intermed = escompile(this.content, config.compilerOptions),
+			};
+			env.utils.extend(transpileConf, config.transpilerOptions);
+
+			var intermed = escompile(this.content, config.compilerOptions),
 			localCompiler = new Transpiler(intermed.code,
 										   this.getModulename(config.anonymous),
 										   transpileConf);
