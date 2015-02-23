@@ -1,14 +1,6 @@
 var fs = require('fs');
 var path = require('path');
-var escompile = require('esnext').compile;
-var Transpiler = require('es6-module-transpiler').Compiler;
-
-var formats = {
-	'amd': 'toAMD',
-	'yui': 'toYUI',
-	'cjs': 'toCJS',
-	'globals': 'toGlobals'
-};
+var babel = require('babel');
 
 module.exports = function pluging(env, callback) {
 	function EsCompiler(path, content) {
@@ -31,18 +23,10 @@ module.exports = function pluging(env, callback) {
 	};
 	EsCompiler.prototype.getView = function() {
 		return function view(env, locals, contents, templates, callback) {
-			var config = env.config.esnext || {},
-			format = formats[config.format || 'globals'],
-			transpileConf = {
-				compatFix: true
-			};
-			env.utils.extend(transpileConf, config.transpilerOptions);
-
-			var intermed = escompile(this.content, config.compilerOptions),
-			localCompiler = new Transpiler(intermed.code,
-										   this.getModulename(config.anonymous),
-										   transpileConf);
-			callback(null, new Buffer(localCompiler[format]()));
+			var config = env.config.babel || {};
+			var es6 = babel.transform(this.content, config.compilerOptions);
+	
+			callback(null, new Buffer(es6));
 		};
 	};
 	EsCompiler.fromFile = function(path, callback) {

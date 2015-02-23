@@ -1,7 +1,7 @@
 {
-  "name": "wintersmith-esnext",
+  "name": "wintersmith-babel",
   "version": "1.0.2",
-  "description": "Wintersmith plugin for ES6 transpiling",
+  "description": "Wintersmith plugin for ES6 transpiling (using Babel)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/Aintaer/wintersmith-esnext",
   "dependencies": {
-    "es6-module-transpiler": "^0.4.0",
-    "esnext": "^0.7.9"
+    "babel": "^4.4.0"
   }
 }
